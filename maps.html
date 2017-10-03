@@ -6,13 +6,19 @@
 	<script>
 	function loadMap() {
 
-	    //var fnb_con = {-26.0995476, 28.0582989,};
+	    var fnb_con = {lat: -26.0995476, lng: 28.0582989};
 
-		var mapOptions = {
+	    var map = new google.maps.Map(document.getElementById("sample"), {
+	        zoom: 15,
+			center: fnb_con
+        });
+
+
+		/*var mapOptions = {
 			center:new google.maps.LatLng(19.373341, 78.662109),
 			zoom:7
 		};
-		var map = new google.maps.Map(document.getElementById("sample"), mapOptions);
+		var map = new google.maps.Map(document.getElementById("sample"), mapOptions);*/
 
 
 		var image = {
@@ -20,7 +26,7 @@
 		};
 
 		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(17.088291, 78.442383),
+			position: fnb_con,
 			map: map,
 			icon: image 
 		});
@@ -47,6 +53,9 @@
 </head>
 
 <body onload="loadMap()">
+	<form>
+		<input type="text" id=""/>
+	</form>
 	<div id="sample" style="width:500px; height:480px;"></div>
 </body>
 </html> 
