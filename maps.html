@@ -12,12 +12,32 @@
 		};
 		var map = new google.maps.Map(document.getElementById("sample"), mapOptions);
 
-		
+
+		var image = {
+			url: "https://github.com/akhanye1/google_maps/blob/master/resource-alittlelesssmaller-mrf-gps-office.png?raw=true",
+		};
 
 		var marker = new google.maps.Marker({
 			position: new google.maps.LatLng(17.088291, 78.442383),
 			map: map,
-			icon: "https://github.com/akhanye1/google_maps/blob/master/resource.mrf.gps.office.png?raw=true"
+			icon: image 
+		});
+
+		marker.setMap(map);
+
+		// Content of current branch will be displayed here.
+
+		var infowindow = new google.maps.InfoWindow({
+			content: "This is the content of this FNB dummy branch"
+		});
+
+		// Code snippet for hovering over icon to review location data
+
+		marker.addListener('mouseover', function() {
+			infowindow.open(map, marker);
+		});
+		marker.addListener('mouseout', function() {
+			infowindow.close(map, marker);
 		});
 	}
 
@@ -27,4 +47,4 @@
 <body onload="loadMap()">
 	<div id="sample" style="width:500px; height:480px;"></div>
 </body>
-</html>
+</html> 
