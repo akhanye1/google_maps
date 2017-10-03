@@ -1,4 +1,4 @@
-<!DOCTYPE html>
+<!DOCTYPE html>0xx
 <head>
 	<title>MAP FRAME</title>
 	<script src="https://maps.googleapis.com/maps/api/js"></script>
@@ -6,21 +6,53 @@
 	<script>
 	function loadMap() {
 
-	    //var fnb_con = {-26.0995476, 28.0582989,};
+		//LatLong of MapOptions
+		var lat = 19.373341;
+		var lng = 78.662109;
+		var X = 17.088291;
+		var Y = 78.442383;
+
+
+		/// bank name
+
+		var officeNames = new Map();
+		var BankCityInfo = {addr: "3, First Place, Pritchard St & Simmonds St, Bank City, Johannesburg, 2000, South Africa",
+						latitude: -26.2027961,
+						longitude: 28.0393762 };
+		var FNBContactCentre = {addr: "396 Kent Avenue, Ferndale, Johanneburg, 2194, South Africa",
+						latitude: -26.08383,
+						longitude: 27.9988963 };
+
+
+		officeNames.set("FNB Bank City", BankCityInfo);
+		officeNames.set("FNB Contact Centre", FNBContactCentre);
+
+	//	var location = prompt("Which bank would you like to find? ");
+
+		var location = "FNB Contact Centre";
+		for (var [key, value] of officeNames) {
+			if (key.localeCompare(location) == 0) {
+				var address = value.addr;
+				var lat = value.latitude;
+				var lng = value.longitude;
+				break ;
+			}
+		}
+
 
 		var mapOptions = {
-			center:new google.maps.LatLng(19.373341, 78.662109),
-			zoom:7
+			center:new google.maps.LatLng(lat, lng),
+			zoom:16	
 		};
+	
 		var map = new google.maps.Map(document.getElementById("sample"), mapOptions);
-
 
 		var image = {
 			url: "https://github.com/akhanye1/google_maps/blob/master/resource-alittlelesssmaller-mrf-gps-office.png?raw=true",
 		};
 
 		var marker = new google.maps.Marker({
-			position: new google.maps.LatLng(17.088291, 78.442383),
+			position: new google.maps.LatLng(lat, lng),
 			map: map,
 			icon: image 
 		});
@@ -30,7 +62,7 @@
 		// Content of current branch will be displayed here.
 
 		var infowindow = new google.maps.InfoWindow({
-			content: "This is the content of this FNB dummy branch"
+			content: address //"This is the content of this FNB dummy branch"
 		});
 
 		// Code snippet for hovering over icon to review location data
