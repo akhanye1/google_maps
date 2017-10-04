@@ -6,7 +6,7 @@
 	<script>
 	function loadMap() {
 
-		/// bank name
+		/// A map of different banks, listning the address and lat/long locations for GPS plotting.
 
 		var officeNames = new Map();
 		var BankCityInfo = {addr: "3, First Place, Pritchard St & Simmonds St, Bank City, Johannesburg, 2000, South Africa",
@@ -15,14 +15,57 @@
 		var FNBContactCentre = {addr: "396 Kent Avenue, Ferndale, Johanneburg, 2194, South Africa",
 						latitude: -26.08383,
 						longitude: 27.9988963 };
+		var MerchantPlace = {addr: "Fredman Dr, Sandton, Johannesburg, 2000, South Africa",
+						latitude: -26.100803, 
+						longitude: 28.057161 };
+		var SandtonOffice = {addr: "1 Fredman Dr, Sandown, Sandton, 2146, South Africa",
+						latitude: -26.100983,
+						longitude: 28.05585 };
+		var	BedfordviewOffice = {addr: "Smith Rd, Bedford Gardens, Germiston, 2007, South Africa",
+						latitude: -26.189661,
+						longitude: 28.126864 };
+		var FairlandCampus = {addr: "FNB Building, 1 Enterprise Rd, Fairland, Johannesburg, 2170, South Africa",
+						latitude: -26.119819,
+						longitude: 27.950944};
+		var WesbankFairland = {addr: "Home of WesBank, 1 Enterprise Road, Fairland, Randburg, 2170, South Africa",
+						latitude: -26.119383,
+						longitude: 27.951728 };
+		var BankCityVP = {addr: "3, First Place, Pritchard St & Simmonds St, Bank City, Johannesburg, 2000, South Africa",
+						latitude: -26.202858,
+						longitude: 28.0379 };
+		var FNBConnectIllovo = {addr: "24 Fricker Rd, Illovo, Sandton, 2196, South Africa",
+						latitude: -26.1306,
+						longitude: 28.047536 };
+		var FNBConnectKent = {addr: "396 Kent Ave, Ferndale, Johannesburg, 2194, South Africa",
+						latitude: -26.084128,
+						longitude: 28.002047 };
+		var FNBComputerCenter = {addr: "Ferndale, Randburg, 2194, South Africa",
+						latitude: -26.096125,
+						longitude: 28.003444 };
+		var FNBInandaCenter = {addr: "Building number 10, Greens Business Park,, 54 Wierda Rd W, Inanda, Sandton, 2196, South Africa",
+						latitude: -26.1154,
+						longitude: 28.05555 };
 
 
-		officeNames.set("FNB Bank City", BankCityInfo);
+				//List of different banks. -- to be turned into a list of options.
+				//Currently a prompt for testing purposes
+
+
 		officeNames.set("FNB Contact Centre", FNBContactCentre);
+		officeNames.set("Merchant Place", MerchantPlace);
+		officeNames.set("Sandton Officies", SandtonOffice);
+		officeNames.set("Bedfordview Offices", BedfordviewOffice);
+		officeNames.set("Fairland Campus", FairlandCampus);
+		officeNames.set("Wesbank Fairland Campus", WesbankFairland);
+		officeNames.set("FNB Bank City", BankCityVP);
+		officeNames.set("FNB Connect Illovo", FNBConnectIllovo);
+		officeNames.set("FNB Contact Center Kent", FNBConnectKent);
+		officeNames.set("FNB Computer Center Randburg", FNBComputerCenter);
+		officeNames.set("FNB Inanda Center", FNBInandaCenter);
 
-	//	var location = prompt("Which bank would you like to find? ");
 
-		var location = "FNB Contact Centre";
+		var location = prompt("Which bank would you like to find? ");
+
 		for (var [key, value] of officeNames) {
 			if (key.localeCompare(location) == 0) {
 				var address = value.addr;
@@ -52,10 +95,8 @@
 
 		marker.setMap(map);
 
-		// Content of current branch will be displayed here.
-
 		var infowindow = new google.maps.InfoWindow({
-			content: address //"This is the content of this FNB dummy branch"
+			content: address 
 		});
 
 		// Code snippet for hovering over icon to review location data
